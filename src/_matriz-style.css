@@ -1,0 +1,28 @@
+@import '_reset.css';
+
+.matriz-aumentada-container{
+    width: 80%;
+    background-color: antiquewhite;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2em;
+}
+
+.matriz-linha{
+    width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    padding: .6em;
+    justify-self: center;
+}
+
+.matriz-campo{
+    width: 85%;
+    height: 8vh;
+    justify-self: center;
+    padding: .5em;
+    outline: none;
+    font-size: 1.2em;
+}

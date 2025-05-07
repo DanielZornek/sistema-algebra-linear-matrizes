@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Linear | Matriz Inversa</title>
+    <link rel="stylesheet" href="src/_matriz-style.css">
+</head>
+<body>
+    <main>
+        <h1>Cálculo de Matriz Inversa</h1>
+        
+        <div class="matriz-aumentada-container">
+            <div class="matriz-linha">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                
+                <input class="matriz-campo inversa" type="number" readonly value="1">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+            </div>
+    
+            <div class="matriz-linha">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo inversa" type="number" readonly value="1">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+            </div>
+    
+            <div class="matriz-linha">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo original" type="number">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo inversa" type="number" readonly value="1">
+            </div>
+        </div>
+        
+        <button onclick="calcularInversa()">Calcular</button>
+        
+        <div>
+            <a href="index.html">Voltar para página inicial</a>
+        </div>
+    </main>
+
+    <script src="src/script.js"></script>
+</body>
+</html>
