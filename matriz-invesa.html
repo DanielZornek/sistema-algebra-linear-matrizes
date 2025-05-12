@@ -10,39 +10,45 @@
 <body>
     <main>
         <h1>Cálculo de Matriz Inversa</h1>
-        
-        <div class="matriz-aumentada-container" onc>
+
+        <div class="matriz-aumentada-container">
             <div class="matriz-linha">
-                <input class="matriz-campo original" type="number" value="2">
-                <input class="matriz-campo original" type="number" value="1">
-                <input class="matriz-campo original" type="number" value="2">
-                
-                <input class="matriz-campo inversa" type="number" readonly value="1">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo original" type="text" value="2"> 
+                <input class="matriz-campo original" type="text" value="1">
+                <input class="matriz-campo original" type="text" value="3">
+
+                <input class="matriz-campo inversa" type="text" readonly value="1">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
             </div>
-    
+
             <div class="matriz-linha">
-                <input class="matriz-campo original" type="number" value="1">
-                <input class="matriz-campo original" type="number" value="1">
-                <input class="matriz-campo original" type="number" value="0">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
-                <input class="matriz-campo inversa" type="number" readonly value="1">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
+                <input class="matriz-campo original" type="text" value="1">
+                <input class="matriz-campo original" type="text" value="2">
+                <input class="matriz-campo original" type="text" value="0">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
+                <input class="matriz-campo inversa" type="text" readonly value="1">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
             </div>
-    
+
             <div class="matriz-linha">
-                <input class="matriz-campo original" type="number" value="1">
-                <input class="matriz-campo original" type="number" value="0">
-                <input class="matriz-campo original" type="number" value="3">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
-                <input class="matriz-campo inversa" type="number" readonly value="0">
-                <input class="matriz-campo inversa" type="number" readonly value="1">
+                <input class="matriz-campo original" type="text" value="0">
+                <input class="matriz-campo original" type="text" value="1">
+                <input class="matriz-campo original" type="text" value="1">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
+                <input class="matriz-campo inversa" type="text" readonly value="0">
+                <input class="matriz-campo inversa" type="text" readonly value="1">
             </div>
         </div>
-        
-        <button onclick="calcularInversa()">Calcular</button>
-        
+
+        <button onclick="calcularInversa()">Calcular Inversa</button>
+
+        <div id="resultado-fracionado">
+            <h2>Matriz Inversa (Frações):</h2>
+            <div id="matriz-inversa-fracionada" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; display: inline-block;">
+                </div>
+        </div>
+
         <div>
             <a href="index.html">Voltar para página inicial</a>
         </div>
@@ -50,10 +56,5 @@
 
     <script src="src/script.js"></script>
 
-    <script>
-        let fracao = new Fraction(16/80);
-        let res = fracao.toFraction(true);
-        console.log(fracao.n+"/"+fracao.d);
-    </script>
 </body>
 </html>
