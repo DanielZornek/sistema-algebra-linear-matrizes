@@ -1,116 +1,94 @@
-let controlePivo = 0;
-let voltando = false; 
-
+let controlePivo = 0; 
 
 let matrizesContainer = document.querySelector(".matriz-aumentada-container");
 
-let linha1Inputs = matrizesContainer.children[0].children;
-let linha2Inputs = matrizesContainer.children[1].children;
-let linha3Inputs = matrizesContainer.children[2].children;
-
 function calcularInversa() {
-
-    let pivoValorNumerico, elParaZerar1, elParaZerar2;
-    let linhaPivoAtual;
-
-    switch (controlePivo) {
-        case 0:
-            linhaPivoAtual = 0;
-            pivoValorNumerico = parseFloat(linha1Inputs[controlePivo].value);
-            elParaZerar1 = parseFloat(linha2Inputs[controlePivo].value); 
-            elParaZerar2 = parseFloat(linha3Inputs[controlePivo].value); 
-            break;
-        case 1:
-            linhaPivoAtual = 1;
-            pivoValorNumerico = parseFloat(linha2Inputs[controlePivo].value);
-            elParaZerar1 = parseFloat(linha1Inputs[controlePivo].value); // Da linha 0 (índice 0)
-            elParaZerar2 = parseFloat(linha3Inputs[controlePivo].value); 
-            break;
-        case 2:
-            linhaPivoAtual = 2;
-            pivoValorNumerico = parseFloat(linha3Inputs[controlePivo].value);
-            elParaZerar1 = parseFloat(linha1Inputs[controlePivo].value);
-            elParaZerar2 = parseFloat(linha2Inputs[controlePivo].value);
-            break;
-        default:
-            alert("Erro: controlePivo com valor inesperado.");
-            return;
-    }
-
-    if (isNaN(pivoValorNumerico) || pivoValorNumerico === 0) {
-        alert(`Pivô inválido (zero ou não numérico) na linha ${linhaPivoAtual + 1}, coluna ${controlePivo + 1}. Não é possível continuar com este pivô.`);
+    if (controlePivo > 2) { 
+        alert("Processo de cálculo da matriz inversa concluído. A matriz à direita deve ser a inversa.");
         return;
     }
 
-    escalonar(linhaPivoAtual, pivoValorNumerico, elParaZerar1, elParaZerar2);
+    let linhaPivoAtual = controlePivo;
+    let colunaPivo = controlePivo;
 
-    if (controlePivo == 2 && !voltando) {
-        controlePivo--;
-        voltando = true;
-    } else if (controlePivo == 1 && voltando == true) {
-        voltando = false;
-        controlePivo--;
-    } else if (controlePivo == 0 && voltando == true) {
-        voltando = false;
-        controlePivo++;
+    let M = [];
+    for(let i=0; i < 3; i++) {
+        M[i] = [];
+        let linhaInputs = matrizesContainer.children[i].children;
+        for(let j=0; j < 6; j++) {
+            M[i][j] = parseFloat(linhaInputs[j].value);
+            if (isNaN(M[i][j])) {
+                alert(`Erro: Valor não numérico encontrado na linha ${i+1}, coluna ${j+1}.`);
+                return;
+            }
+        }
     }
-    else {
-        controlePivo++;
+
+    let pivoValorNumerico = M[linhaPivoAtual][colunaPivo];
+
+    if (Math.abs(pivoValorNumerico) < 1e-9) { 
+        let linhaTrocada = false;
+        for (let k = linhaPivoAtual + 1; k < 3; k++) { 
+            if (Math.abs(M[k][colunaPivo]) > 1e-9) {
+                let linhaAtualHTML = matrizesContainer.children[linhaPivoAtual];
+                let linhaParaTrocaHTML = matrizesContainer.children[k];
+
+                for(let j=0; j<6; j++) {
+                    let tempVal = linhaAtualHTML.children[j].value;
+                    linhaAtualHTML.children[j].value = linhaParaTrocaHTML.children[j].value;
+                    linhaParaTrocaHTML.children[j].value = tempVal;
+                }
+                pivoValorNumerico = parseFloat(linhaAtualHTML.children[colunaPivo].value); 
+                linhaTrocada = true;
+                alert(`Linha ${linhaPivoAtual + 1} trocada com linha ${k + 1} para obter pivô não nulo.`);
+                break;
+            }
+        }
+        if (!linhaTrocada) {
+            alert(`Pivô zero ou próximo de zero na linha ${linhaPivoAtual + 1}, coluna ${colunaPivo + 1}, e não foi possível trocar linhas. A matriz pode ser singular (não invertível).`);
+            return;
+        }
+    }
+    
+    escalonar(linhaPivoAtual, pivoValorNumerico, colunaPivo);
+
+    controlePivo++; 
+
+    if (controlePivo <= 2) {
+        console.log(`Próximo pivô a ser processado: coluna ${controlePivo + 1}`);
+    } else {
+        alert("Matriz Inversa calculada (ou processo finalizado). A matriz à direita é a candidata a inversa.");
     }
 }
 
-function escalonar(indiceLinhaPivo, valorPivo, elOriginalParaZerar1, elOriginalParaZerar2) {
-    const fatorOperacao1 = -elOriginalParaZerar1;
-    const fatorOperacao2 = -elOriginalParaZerar2;
-
-    let indiceLinhaParaFator1, indiceLinhaParaFator2;
-
-    if (indiceLinhaPivo === 0) {
-        indiceLinhaParaFator1 = 1; 
-        indiceLinhaParaFator2 = 2; 
-    } else if (indiceLinhaPivo === 1) {
-        indiceLinhaParaFator1 = 0; 
-        indiceLinhaParaFator2 = 2; 
-    } else { 
-        indiceLinhaParaFator1 = 0; 
-        indiceLinhaParaFator2 = 1; 
-    }
-
-    for (let i = 0; i < matrizesContainer.children.length; i++) { 
+function escalonar(indiceLinhaPivo, valorPivoOriginal, colunaPivo) {
+    for (let i = 0; i < 3; i++) { 
         if (i === indiceLinhaPivo) {
-            continue;
+            continue; 
         }
 
-        let fatorOperacaoAtual;
-        if (i === indiceLinhaParaFator1) {
-            fatorOperacaoAtual = fatorOperacao1;
-        } else if (i === indiceLinhaParaFator2) {
-            fatorOperacaoAtual = fatorOperacao2;
-        } else {
-            console.error("Erro: Não foi possível determinar o fator de operação para a linha " + i);
-            continue;
-        }
+        let elementoParaZerar_Li = parseFloat(matrizesContainer.children[i].children[colunaPivo].value);
 
-        for (let j = 0; j < 6; j++) {
+        if (Math.abs(valorPivoOriginal) < 1e-9) { 
+            console.error("Erro crítico: Divisão por pivô zero em escalonar. Isso não deveria acontecer.");
+            return; 
+        }
+        
+        const multiplicador = elementoParaZerar_Li / valorPivoOriginal;
+
+        for (let j = 0; j < 6; j++) { 
             let valorAtual_Li_j = parseFloat(matrizesContainer.children[i].children[j].value);
-            let valorAtual_Lk_j = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value);
+            let valorAtual_Lk_j = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value); 
 
-            let novoValor = (valorPivo * valorAtual_Li_j) + (fatorOperacaoAtual * valorAtual_Lk_j);
-
-            matrizesContainer.children[i].children[j].value = novoValor;
+            let novoValor = valorAtual_Li_j - (multiplicador * valorAtual_Lk_j);
+            matrizesContainer.children[i].children[j].value = isNaN(novoValor) ? "0" : novoValor.toFixed(6); 
         }
     }
 
-    if (valorPivo !== 0) { // Evitar divisão por zero
+    if (Math.abs(valorPivoOriginal) > 1e-9) { 
         for (let j = 0; j < 6; j++) {
-            let val = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value);
-            matrizesContainer.children[indiceLinhaPivo].children[j].value = val / valorPivo;
+            let val_Lk_j_antes_norm = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value);
+            matrizesContainer.children[indiceLinhaPivo].children[j].value = (val_Lk_j_antes_norm / valorPivoOriginal).toFixed(6);
         }
     }
 }
-
-// Adiciona um listener para o botão, caso prefira em vez do onclick no HTML
-// const botaoCalcular = document.querySelector('button');
-// if (botaoCalcular) {
-//     botaoCalcular.addEventListener('click', calcularInversa);
-// }
