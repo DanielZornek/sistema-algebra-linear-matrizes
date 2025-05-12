@@ -1,0 +1,8 @@
+@media screen and (max-width: 768px){
+    .matriz-aumentada-container{
+        width: 100%;
+    }
+    .matriz-linha{
+        width: 100%;
+    }
+} 

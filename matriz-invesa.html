@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algebra Linear | Matriz Inversa</title>
     <link rel="stylesheet" href="src/matriz-style.css">
+    <link rel="stylesheet" href="src/responsive.css">
     <script src="src/fraction.min.js"></script>
 </head>
 <body>
@@ -41,11 +42,12 @@
             </div>
         </div>
 
-        <button onclick="calcularInversa()">Calcular Inversa</button>
+        <button class="button1" onclick="calcularInversa()">Calcular Inversa</button>
+        <button class="button2" onclick="resetarMatriz()">Resetar Matriz</button>
 
         <div id="resultado-fracionado">
             <h2>Matriz Inversa (Frações):</h2>
-            <div id="matriz-inversa-fracionada" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; display: inline-block;">
+            <div id="matriz-inversa-fracionada" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
                 </div>
         </div>
 
@@ -55,6 +57,10 @@
     </main>
 
     <script src="src/script.js"></script>
-
+    <footer>
+        <p>Feito por <span>
+            &copy;DanielZornek</span>
+        </p>
+    </footer>
 </body>
 </html>
