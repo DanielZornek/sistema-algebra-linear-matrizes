@@ -81,14 +81,14 @@ function escalonar(indiceLinhaPivo, valorPivoOriginal, colunaPivo) {
             let valorAtual_Lk_j = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value); 
 
             let novoValor = valorAtual_Li_j - (multiplicador * valorAtual_Lk_j);
-            matrizesContainer.children[i].children[j].value = isNaN(novoValor) ? "0" : novoValor.toFixed(6); 
+            matrizesContainer.children[i].children[j].value = novoValor.toString(); 
         }
     }
 
     if (Math.abs(valorPivoOriginal) > 1e-9) { 
         for (let j = 0; j < 6; j++) {
             let val_Lk_j_antes_norm = parseFloat(matrizesContainer.children[indiceLinhaPivo].children[j].value);
-            matrizesContainer.children[indiceLinhaPivo].children[j].value = (val_Lk_j_antes_norm / valorPivoOriginal).toFixed(6);
+            matrizesContainer.children[indiceLinhaPivo].children[j].value = (val_Lk_j_antes_norm / valorPivoOriginal).toString();
         }
     }
 }
