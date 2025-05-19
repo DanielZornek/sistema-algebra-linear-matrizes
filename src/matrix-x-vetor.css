@@ -1,4 +1,14 @@
+
 @import 'reset.css';
+
+:root {
+    --cor1: #007bff;
+    --cor2: #e9ecef;
+    --cor3: #6c757d;
+    --cor4: #dc3545;
+    --cor5: #343a40;
+}
+
 
 main{
     min-height: 100vh;
@@ -11,46 +21,127 @@ main{
 }
 
 .matriz-aumentada-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
     width: 80%;
     background-color: rgba(0, 0, 0, 0.650);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     padding: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-.matriz-linha{
+.matriz-block {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 0.5em;
+}
+
+.matriz-block .matriz-linha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    gap: 1.4em;
+    gap: 0.5em;
+    width: auto;
 }
 
 .matriz-campo{
-    width: 85%;
-    height: 8vh;
-    justify-self: center;
-    padding: .5em;
+    width: 60px;
+    height: 40px;
+    padding: .3em;
     outline: none;
     font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.matriz-linha.separator {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 0 1em;
+     flex-direction: row;
+     gap: 0;
+}
+
+.matriz-linha.separator p{
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.vetor-block {
+     display: flex;
+     flex-direction: column;
+     gap: 0.5em;
+}
+
+.vetor-block .matriz-linha {
+     display: flex;
+     flex-direction: column;
+     gap: 0.5em;
+     width: auto;
+     align-items: flex-start;
+     justify-content: center;
 }
 
 .vetor-campo{
-    width: 85%;
-    height: 8vh;
-    justify-self: center;
-    padding: .5em;
+    width: 60px;
+    height: 40px;
+    padding: .3em;
     outline: none;
     font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #ccc;
 }
 
-.matriz-linha p{
+#resultado-fracionado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#resultado-fracionado h2{
     color: #fff;
-    font-weight: bolder;
-    font-size: 1.3em;
+    text-align: center;
 }
 
+
+#matriz-inversa-fracionada{
+    background-color: var(--cor2);
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#matriz-inversa-fracionada table{
+    width: auto;
+    border-collapse: collapse;
+}
+
+#matriz-inversa-fracionada table tr{
+     display: block;
+     width: auto;
+}
+
+#matriz-inversa-fracionada table td{
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 0.5em 1em;
+    text-align: center;
+    border: none;
+}
+
+
+/* Estilos para botões, footer, etc.*/
 button{
     outline: none;
     border: none;
@@ -64,22 +155,27 @@ button{
 .button1{
     background-color: var(--cor1);
     border: 2px solid #000;
+    color: #000; 
 }
 
 .button1:hover{
     background-color: transparent;
     border: 2px solid var(--cor1);
+     color: var(--cor1); /* Cor do texto no hover */
 }
 
 .button2{
     background-color: var(--cor4);
     border: 2px solid #000;
+     color: #000;
 }
 
 .button2:hover{
     background-color: transparent;
     border: 2px solid var(--cor4);
+     color: var(--cor4);
 }
+
 
 footer{
     padding: 4em;
@@ -87,37 +183,10 @@ footer{
     font-size: 1.25em;
     color: #fff;
     background-image: linear-gradient(-120deg, #000000, var(--cor3));
+    width: 100%;
+    margin-top: auto;
 }
 
 footer p span{
     font-weight: 700;
-}
-
-#matriz-inversa-fracionada{
-    background-color: var(--cor2);
-}
-
-#matriz-inversa-fracionada table{
-    width: 100%;
-}
-
-#matriz-inversa-fracionada table tbody{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1.2em;
-}
-
-#matriz-inversa-fracionada table tbody tr{
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-#matriz-inversa-fracionada table tbody tr td{
-    font-size: 1.2em;
-    font-weight: 700;
-    padding: 1.2em;
 }

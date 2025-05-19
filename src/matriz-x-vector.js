@@ -99,7 +99,7 @@ function exibirResultadoVetorFracionado(vetorResultado) {
 
     let htmlString = "<table>";
     for (let i = 0; i < vetorResultado.length; i++) {
-        let fracaoStr = vetorResultado[i].toFraction(true);
+        let fracaoStr = vetorResultado[i].toFraction(false);
         htmlString += `<tr><td>${fracaoStr}</td></tr>`;
     }
     htmlString += "</table>";

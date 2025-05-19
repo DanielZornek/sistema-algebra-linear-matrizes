@@ -45,7 +45,7 @@ function exibirMatrizInversaFracionada(M) {
     for (let i = 0; i < N; i++) {
         htmlString += "<tr>";
         for (let j = N; j < 2 * N; j++) {
-            let fracaoStr = M[i][j].toFraction(true);
+            let fracaoStr = M[i][j].toFraction(false);
             htmlString += `<td style="padding: 5px; text-align: center;">${fracaoStr}</td>`;
         }
         htmlString += "</tr>";
