@@ -1,0 +1,123 @@
+@import 'reset.css';
+
+main{
+    min-height: 100vh;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6em;
+    background-color: var(--cor5);
+}
+
+.matriz-aumentada-container{
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.650);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 2em;
+}
+
+.matriz-linha{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.4em;
+}
+
+.matriz-campo{
+    width: 85%;
+    height: 8vh;
+    justify-self: center;
+    padding: .5em;
+    outline: none;
+    font-size: 1.2em;
+}
+
+.vetor-campo{
+    width: 85%;
+    height: 8vh;
+    justify-self: center;
+    padding: .5em;
+    outline: none;
+    font-size: 1.2em;
+}
+
+.matriz-linha p{
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+button{
+    outline: none;
+    border: none;
+    padding: 1.2em;
+    border-radius: .7em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: .2s ease-in-out;
+}
+
+.button1{
+    background-color: var(--cor1);
+    border: 2px solid #000;
+}
+
+.button1:hover{
+    background-color: transparent;
+    border: 2px solid var(--cor1);
+}
+
+.button2{
+    background-color: var(--cor4);
+    border: 2px solid #000;
+}
+
+.button2:hover{
+    background-color: transparent;
+    border: 2px solid var(--cor4);
+}
+
+footer{
+    padding: 4em;
+    text-align: center;
+    font-size: 1.25em;
+    color: #fff;
+    background-image: linear-gradient(-120deg, #000000, var(--cor3));
+}
+
+footer p span{
+    font-weight: 700;
+}
+
+#matriz-inversa-fracionada{
+    background-color: var(--cor2);
+}
+
+#matriz-inversa-fracionada table{
+    width: 100%;
+}
+
+#matriz-inversa-fracionada table tbody{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2em;
+}
+
+#matriz-inversa-fracionada table tbody tr{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#matriz-inversa-fracionada table tbody tr td{
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 1.2em;
+}

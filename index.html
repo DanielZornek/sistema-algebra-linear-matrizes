@@ -4,17 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algebra Linear</title>
+    <link rel="stylesheet" href="src/reset.css">
+    <style>
+        body{
+            background-color: #000;
+        }
+         main{
+            width: 80%;
+            margin: 0 auto;
+            padding: 2em;
+            background-color: var(--cor5);
+         }
+         .container{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.650);
+            align-items: center;
+            justify-content: space-evenly;
+         }
+         .container section a{
+            text-decoration: none;
+            color: #000;
+            font-size: 1.35em;
+            font-weight: 600;
+            padding: .8em;
+            background-color: var(--cor1);
+            border: 2px solid #000;
+            border-radius: .7em;
+            transition: .2s ease-in;
+         }
+         .container section a:hover{
+            text-decoration: underline;
+            background-color: transparent;
+            color: var(--cor1);
+         }
+         footer{
+            padding: 4em;
+            text-align: center;
+            font-size: 1.25em;
+            color: #fff;
+            background-image: linear-gradient(-120deg, #000000, var(--cor3));
+        }
+
+        footer p span{
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
-   <header>
-
-   </header>
    <main>
-        <div>
+        <div class="container">
             <section>
                 <a href="matriz-invesa.html">Calcular Inversa</a>
             </section>
+            <section>
+                <a href="matriz-x-vetor.html">Matriz x Vetor</a>
+            </section>
         </div>
    </main> 
+   <footer>
+        <p>Feito por <span>
+            &copy;DanielZornek</span>
+        </p>
+    </footer>
 </body>
 </html>

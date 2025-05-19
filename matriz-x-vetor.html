@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz X Vetor</title>
+    <link rel="stylesheet" href="src/matrix-x-vetor.css">
+    <script src="src/fraction.min.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Cálculo de Matriz X Vetor</h1>
+
+        <div class="matriz-aumentada-container">
+            <div class="matriz-linha">
+                <input class="matriz-campo" type="text" value="2"> 
+                <input class="matriz-campo" type="text" value="1">
+                <input class="matriz-campo" type="text" value="3">
+            </div>
+            <div class="matriz-linha">
+                <input class="matriz-campo" type="text" value="2"> 
+                <input class="matriz-campo" type="text" value="1">
+                <input class="matriz-campo" type="text" value="3">
+            </div>
+            <div class="matriz-linha">
+                <input class="matriz-campo" type="text" value="2"> 
+                <input class="matriz-campo" type="text" value="1">
+                <input class="matriz-campo" type="text" value="3">
+            </div>
+
+            <div class="matriz-linha">
+                <p>X</p>
+            </div>
+
+            <div class="matriz-linha">
+                <input class="vetor-campo" type="text" value="2"> 
+                <input class="vetor-campo" type="text" value="1">
+                <input class="vetor-campo" type="text" value="3">
+            </div>
+
+        </div>
+
+        <button class="button1" onclick="calcularInversa()">Multiplicar</button>
+        <button class="button2" onclick="resetarMatriz()">Resetar</button>
+
+        <div id="resultado-fracionado">
+            <h2>Matriz Inversa (Frações):</h2>
+            <div id="matriz-inversa-fracionada" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+                </div>
+        </div>
+
+        <div>
+            <a href="index.html">Voltar para página inicial</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Feito por <span>
+            &copy;DanielZornek</span>
+        </p>
+    </footer>
+
+    <script src="src/matriz-x-vector.js"></script>
+</body>
+</html>
